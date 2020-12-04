@@ -31,12 +31,18 @@ workflows:
   windows:
     jobs:
       - test
-      - build_windows
+      - build_windows:
+          requires:
+            - test
   macos:
     jobs:
       - test
-      - build_macos
+      - build_macos:
+          requires:
+            - test
   linux:
     jobs:
       - test
-      - build_macos
+      - build_linux:
+        requires:
+          - test
